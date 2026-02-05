@@ -38,8 +38,8 @@ const HomeScreen = () => {
             source={{
               uri: 'https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4', // Placeholder Stream URL
             }}
-            useNativeControls
-            resizeMode={ResizeMode.CONTAIN}
+            useNativeControls={true}
+            resizeMode="contain"
             isLooping={false}
             onPlaybackStatusUpdate={status => setStatus(() => status)}
           />
