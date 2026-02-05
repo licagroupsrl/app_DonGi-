@@ -1,20 +1,19 @@
 import React, { useRef, useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Image } from 'react-native';
-import { Video, ResizeMode } from 'expo-av';
+// import { Video, ResizeMode } from 'expo-av'; // Temporarily disabled
 import { COLORS, FONTS, COMMON_STYLES, SHADOWS } from '../constants/theme';
 import { Ionicons } from '@expo/vector-icons';
 
 const HomeScreen = () => {
-  const video = useRef(null);
-  const [status, setStatus] = useState({});
+  // const video = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
   // Function to handle the "Watch Live" action
   const handleWatchLive = () => {
-    if (video.current) {
-      video.current.playAsync();
+    // if (video.current) {
+    //   video.current.playAsync();
       setIsPlaying(true);
-    }
+    // }
   };
 
   return (
@@ -29,20 +28,26 @@ const HomeScreen = () => {
         <View style={styles.videoContainer}>
           {/*
             CONFIGURATION NOTE:
-            Replace 'source' with your actual HLS stream URL or MP4 link.
-            For YouTube Live, consider using 'react-native-youtube-iframe' instead of expo-av.
+            Video component is temporarily disabled to resolve rendering issues on some devices.
+            Uncomment the code below once the environment is stable.
           */}
+          {/*
           <Video
             ref={video}
             style={styles.video}
             source={{
-              uri: 'https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4', // Placeholder Stream URL
+              uri: 'https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4',
             }}
             useNativeControls={true}
             resizeMode="contain"
             isLooping={false}
             onPlaybackStatusUpdate={status => setStatus(() => status)}
           />
+          */}
+          <View style={[styles.video, { justifyContent: 'center', alignItems: 'center', backgroundColor: '#333' }]}>
+            <Ionicons name="videocam-off" size={50} color={COLORS.secondaryText} />
+            <Text style={{ color: COLORS.white, marginTop: 10 }}>Video Player (Placeholder)</Text>
+          </View>
         </View>
 
         {!isPlaying && (
